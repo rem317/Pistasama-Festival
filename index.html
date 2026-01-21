@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistasama Festival | Cuenca's Tinapayan Festival</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d35400;
+            --secondary: #f39c12;
+            --accent: #e74c3c;
+            --light: #fff9e6;
+            --dark: #2c3e50;
+            --text: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #fefefe;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.95));
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(44, 62, 80, 0.98);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            transition: transform 0.5s;
+        }
+
+        .logo:hover i {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=1365&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #f0f0f0;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            animation: fadeInUp 1s ease 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Floating Bread Animation */
+        .floating-bread {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px 15px;
+            min-width: 120px;
+            transition: var(--transition);
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .countdown-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        /* Main Content */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .about-image:hover .image-caption {
+            transform: translateY(0);
+        }
+
+        /* Interactive Bread Timeline */
+        .bread-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .bread-timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--secondary);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-icon {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .timeline-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: none;
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            z-index: 10;
+        }
+
+        .timeline-item.active .timeline-content {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            background-color: var(--light);
+        }
+
+        .highlight-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Interactive Schedule */
+        .schedule-table {
+            overflow-x: auto;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tr {
+            transition: var(--transition);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #fff3e0;
+            transform: scale(1.01);
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .event-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .cultural {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .religious {
+            background-color: #9b59b6;
+            color: white;
+        }
+
+        .competition {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .food {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: white;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.3s 0.1s;
+        }
+
+        .gallery-item:hover .gallery-overlay h4 {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay p {
+            color: #ddd;
+            font-size: 0.9rem;
+            transform: translateY(20px);
+            transition: transform 0.3s 0.2s;
+        }
+
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        /* 3D Bread Model Section */
+        .bread-model {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .bread-container {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .bread-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .bread-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            backface-visibility: hidden;
+        }
+
+        .bread-front {
+            transform: translateZ(150px);
+        }
+
+        .bread-back {
+            transform: rotateY(180deg) translateZ(150px);
+        }
+
+        .bread-left {
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+
+        .bread-right {
+            transform: rotateY(90deg) translateZ(150px);
+        }
+
+        .bread-top {
+            transform: rotateX(90deg) translateZ(150px);
+        }
+
+        .bread-bottom {
+            transform: rotateX(-90deg) translateZ(150px);
+        }
+
+        .bread-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .bread-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .bread-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            min-width: 280px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--secondary);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Interactive Map */
+        .festival-map {
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .map-marker:hover {
+            transform: rotate(-45deg) scale(1.3);
+        }
+
+        .map-marker::after {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            display: none;
+            z-index: 10;
+        }
+
+        .map-marker:hover .map-tooltip {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(5deg);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* Modal for Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80%;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .modal-nav button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-nav button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+            }
+            
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 30px 20px;
+                text-align: center;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                border-top: 2px solid var(--secondary);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .bread-timeline {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .bread-timeline::before {
+                display: none;
+            }
+            
+            .timeline-content {
+                position: static;
+                transform: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .timeline-item.active .timeline-content {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 130px 0 60px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .card, .contact-item {
+                min-width: 100%;
+            }
+            
+            .countdown {
+                padding: 20px;
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px 10px;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo" id="logo">
+                    <i class="fas fa-bread-slice"></i>
+                    <h1>Pistasama <span>Festival</span></h1>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#highlights" class="nav-link">Highlights</a></li>
+                        <li><a href="#schedule" class="nav-link">Schedule</a></li>
+                        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Floating bread icons -->
+        <div class="floating-bread" style="top: 10%; left: 5%;"><i class="fas fa-bread-slice"></i></div>
+        <div class="floating-bread" style="top: 20%; right: 8%;"><i class="fas fa-cookie-bite"></i></div>
+        <div class="floating-bread" style="bottom: 30%; left: 10%;"><i class="fas fa-bread-slice"></i></div>
+        <div class="floating-bread" style="bottom: 20%; right: 5%;"><i class="fas fa-cookie-bite"></i></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h2>Celebrating Cuenca's Rich Bread-Making Heritage</h2>
+                <p>The Pistasama Festival, also known as the Tinapayan Festival, is a vibrant celebration in Cuenca, Batangas that honors the town's traditional bread-making industry and its patron saint, St. Isidore the Farmer.</p>
+                <a href="#about" class="cta-button">Discover the Festival <i class="fas fa-arrow-down"></i></a>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Pistasama Festival</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>The Tinapayan Festival of Cuenca</h3>
+                    <p>The <strong>Pistasama Festival</strong>, popularly known as the <strong>Tinapayan Festival</strong>, is an annual celebration held every May 14-15 in the municipality of Cuenca, Batangas, Philippines. The festival's name is derived from the Filipino words "pista" (feast) and "sama" (together), literally meaning "feasting together".</p>
+                    <p>This colorful festival showcases Cuenca's rich tradition of bread-making, which has been a primary livelihood for many families in the town for generations. The festival honors <strong>St. Isidore the Farmer</strong>, the town's patron saint, and gives thanks for bountiful harvests and successful bread-making enterprises.</p>
+                    <p>During the festival, the streets come alive with street dancing competitions, colorful parades, bread-making demonstrations, and various cultural presentations. The highlight is the "Tinapayan" (bread) street dancing where participants wear costumes made from bread materials and perform dances that depict the bread-making process.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pistasama Festival Street Dancing">
+                    <div class="image-caption">
+                        <p>Street dancers in colorful costumes during the Pistasama Festival</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Bread Timeline -->
+            <div class="bread-timeline">
+                <div class="timeline-item" data-step="1">
+                    <div class="timeline-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Ingredients</h4>
+                    <div class="timeline-content">
+                        <p>Traditional bread-making in Cuenca starts with locally sourced ingredients: flour, yeast, sugar, and water. Some bakers add unique local touches like coconut milk or sweet potato.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="2">
+                    <div class="timeline-icon">
+                        <i class="fas fa-kneading-dough"></i>
+                    </div>
+                    <h4>Kneading</h4>
+                    <div class="timeline-content">
+                        <p>The dough is kneaded by hand, a skill passed down through generations. Proper kneading develops gluten for the perfect bread texture.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="3">
+                    <div class="timeline-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <h4>Rising</h4>
+                    <div class="timeline-content">
+                        <p>The dough is left to rise, allowing yeast to ferment and create air pockets. This crucial step determines the bread's final volume and texture.</p>
+                    </div>
+                </div>
+                <div class="timeline-item active" data-step="4">
+                    <div class="timeline-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4>Baking</h4>
+                    <div class="timeline-content">
+                        <p>Traditional wood-fired ovens give Cuenca bread its distinctive flavor and crust. Bakers monitor temperature carefully for perfect results.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="5">
+                    <div class="timeline-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <h4>Serving</h4>
+                    <div class="timeline-content">
+                        <p>Freshly baked bread is served warm, often with local spreads or enjoyed plain. The aroma fills the streets during festival time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section highlights" id="highlights">
+        <div class="container">
+            <div class="section-title">
+                <h2>Festival Highlights</h2>
+            </div>
+            <div class="highlight-cards">
+                <div class="card">
+                    <div class="card-badge">Most Popular</div>
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Street Dancing">
+                    </div>
+                    <div class="card-content">
+                        <h3>Street Dancing Competition</h3>
+                        <p>Colorful street dancing with participants in creative costumes made from bread-making materials. Dancers perform choreographed routines that tell the story of Cuenca's bread-making heritage.</p>
+                        <button class="cta-button" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">Learn More</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Interactive</div>
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1608190003443-86ab6a3b2d65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bread Making">
+                    </div>
+                    <div class="card-content">
+                        <h3>Bread-Making Demonstrations</h3>
+                        <p>Live demonstrations of traditional and modern bread-making techniques by local bakers. Visitors can learn how to make different types of bread and even try their hand at baking.</p>
+                        <button class="cta-button" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">Learn More</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Tasty!</div>
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food Fair">
+                    </div>
+                    <div class="card-content">
+                        <h3>Food Fair & Bread Festival</h3>
+                        <p>A showcase of Cuenca's culinary delights with various bread products, local delicacies, and food stalls. Visitors can sample different bread varieties and purchase local products.</p>
+                        <button class="cta-button" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="section" id="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Festival Schedule</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">The Pistasama Festival is celebrated annually from May 14-15 in Cuenca, Batangas. Here's a typical schedule of events:</p>
+            
+            <!-- 3D Bread Model -->
+            <div class="bread-model">
+                <h3>Interactive Bread Model</h3>
+                <p>Rotate the 3D bread model to explore from all angles</p>
+                <div class="bread-container">
+                    <div class="bread-3d" id="bread3d">
+                        <div class="bread-face bread-front"></div>
+                        <div class="bread-face bread-back"></div>
+                        <div class="bread-face bread-left"></div>
+                        <div class="bread-face bread-right"></div>
+                        <div class="bread-face bread-top"></div>
+                        <div class="bread-face bread-bottom"></div>
+                    </div>
+                </div>
+                <div class="bread-controls">
+                    <button class="bread-btn" id="rotateLeft"><i class="fas fa-undo"></i> Rotate Left</button>
+                    <button class="bread-btn" id="rotateRight">Rotate Right <i class="fas fa-redo"></i></button>
+                    <button class="bread-btn" id="resetBread"><i class="fas fa-sync-alt"></i> Reset</button>
+                </div>
+            </div>
+
+            <div class="schedule-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>Venue</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>May 13</td>
+                            <td class="time">6:00 PM</td>
+                            <td>Opening Parade & Ceremony</td>
+                            <td>Municipal Plaza</td>
+                            <td><span class="event-tag cultural">Cultural</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 14</td>
+                            <td class="time">8:00 AM</td>
+                            <td>Holy Mass in honor of St. Isidore</td>
+                            <td>St. Isidore Parish Church</td>
+                            <td><span class="event-tag religious">Religious</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 14</td>
+                            <td class="time">9:00 AM - 5:00 PM</td>
+                            <td>Bread-Making Competition & Exhibits</td>
+                            <td>Municipal Grounds</td>
+                            <td><span class="event-tag competition">Competition</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 14</td>
+                            <td class="time">1:00 PM</td>
+                            <td>Street Dancing Competition</td>
+                            <td>Main Streets of Cuenca</td>
+                            <td><span class="event-tag cultural">Cultural</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 14</td>
+                            <td class="time">7:00 PM</td>
+                            <td>Cultural Night & Awarding Ceremony</td>
+                            <td>Municipal Plaza</td>
+                            <td><span class="event-tag cultural">Cultural</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 15</td>
+                            <td class="time">8:00 AM</td>
+                            <td>Procession of St. Isidore</td>
+                            <td>Around the Town</td>
+                            <td><span class="event-tag religious">Religious</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 15</td>
+                            <td class="time">10:00 AM - 8:00 PM</td>
+                            <td>Food Fair & Local Products Showcase</td>
+                            <td>Municipal Grounds</td>
+                            <td><span class="event-tag food">Food</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 15</td>
+                            <td class="time">7:00 PM</td>
+                            <td>Fireworks Display & Closing Ceremony</td>
+                            <td>Municipal Plaza</td>
+                            <td><span class="event-tag cultural">Cultural</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Festival Gallery</h2>
+            </div>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="dancing">Street Dancing</button>
+                <button class="filter-btn" data-filter="bread">Bread Making</button>
+                <button class="filter-btn" data-filter="culture">Cultural Events</button>
+                <button class="filter-btn" data-filter="food">Food & Products</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="dancing">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festival Parade">
+                    <div class="gallery-overlay">
+                        <h4>Street Parade</h4>
+                        <p>Colorful parade with dancers in traditional costumes</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="bread">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bread Display">
+                    <div class="gallery-overlay">
+                        <h4>Bread Display</h4>
+                        <p>Artistic arrangement of various bread types</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="food">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festival Food">
+                    <div class="gallery-overlay">
+                        <h4>Food Stalls</h4>
+                        <p>Local delicacies and bread products for sale</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="culture">
+                    <img src="https://images.unsplash.com/photo-1540420828642-fca2c5c18abb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cultural Performance">
+                    <div class="gallery-overlay">
+                        <h4>Cultural Performance</h4>
+                        <p>Traditional dances and music performances</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="bread">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Local Market">
+                    <div class="gallery-overlay">
+                        <h4>Local Market</h4>
+                        <p>Artisans selling handmade crafts and products</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="dancing">
+                    <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festival Crowd">
+                    <div class="gallery-overlay">
+                        <h4>Festival Crowd</h4>
+                        <p>Visitors enjoying the vibrant festival atmosphere</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Festival Map</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">Explore the key locations of the Pistasama Festival in Cuenca. Hover over the markers to learn more about each venue.</p>
+            
+            <div class="festival-map">
+                <div class="map-container">
+                    <!-- Map markers will be added dynamically via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact & Information</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Cuenca, Batangas, Philippines</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Festival Dates</h4>
+                        <p>May 14-15 (Annually)</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Contact</h4>
+                        <p>Municipal Tourism Office: (043) 123-4567</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@pistasamafestival.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pistasama Festival</h3>
+                    <p>The Tinapayan Festival of Cuenca, Batangas celebrates the town's rich bread-making heritage and honors St. Isidore the Farmer.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> About the Festival</a></li>
+                        <li><a href="#highlights"><i class="fas fa-star"></i> Festival Highlights</a></li>
+                        <li><a href="#schedule"><i class="fas fa-calendar"></i> Event Schedule</a></li>
+                        <li><a href="#gallery"><i class="fas fa-images"></i> Photo Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Related Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-globe"></i> Cuenca Municipal Website</a></li>
+                        <li><a href="#"><i class="fas fa-map-marked-alt"></i> Batangas Tourism</a></li>
+                        <li><a href="#"><i class="fas fa-church"></i> St. Isidore Parish</a></li>
+                        <li><a href="#"><i class="fas fa-bread-slice"></i> Local Bread Makers Association</a></li>
+                        <li><a href="#"><i class="fas fa-calendar-check"></i> Philippine Festivals Calendar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Pistasama Festival - Cuenca, Batangas. All rights reserved. | Website created for educational purposes</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Gallery Modal -->
+    <div class="modal" id="galleryModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-nav">
+            <button id="prevImage"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextImage"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Festival Image">
+        </div>
+        <div class="modal-caption">
+            <h4 id="modalTitle">Image Title</h4>
+            <p id="modalDesc">Image description goes here</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize Particles.js Background
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#f39c12" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#d35400",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Back to top button visibility
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Add active class to nav links based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            // Set festival date (May 15 of current year)
+            const currentYear = new Date().getFullYear();
+            let festivalDate = new Date(currentYear, 4, 15); // May is month 4 (0-indexed)
+            
+            // If festival date has passed this year, set to next year
+            const now = new Date();
+            if (now > festivalDate) {
+                festivalDate = new Date(currentYear + 1, 4, 15);
+            }
+            
+            const timeRemaining = festivalDate - now;
+            
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Add animation to countdown numbers
+            const countdownValues = document.querySelectorAll('.countdown-value');
+            countdownValues.forEach(value => {
+                value.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    value.style.transform = 'scale(1)';
+                }, 200);
+            });
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Interactive Bread Timeline
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                timelineItems.forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+            });
+        });
+
+        // 3D Bread Model Interaction
+        const bread3d = document.getElementById('bread3d');
+        const rotateLeftBtn = document.getElementById('rotateLeft');
+        const rotateRightBtn = document.getElementById('rotateRight');
+        const resetBreadBtn = document.getElementById('resetBread');
+        
+        let rotationY = 0;
+        let rotationX = 0;
+        
+        rotateLeftBtn.addEventListener('click', () => {
+            rotationY -= 45;
+            bread3d.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+        });
+        
+        rotateRightBtn.addEventListener('click', () => {
+            rotationY += 45;
+            bread3d.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+        });
+        
+        resetBreadBtn.addEventListener('click', () => {
+            rotationY = 0;
+            rotationX = 0;
+            bread3d.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+        });
+        
+        // Drag functionality for 3D bread
+        let isDragging = false;
+        let startX, startY;
+        
+        bread3d.parentElement.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+        
+        bread3d.parentElement.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
+            
+            rotationY += deltaX * 0.5;
+            rotationX -= deltaY * 0.5;
+            
+            bread3d.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+            
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+        
+        bread3d.parentElement.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        
+        bread3d.parentElement.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+
+        // Gallery Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Gallery Modal
+        const modal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const closeModalBtn = document.getElementById('closeModal');
+        const prevImageBtn = document.getElementById('prevImage');
+        const nextImageBtn = document.getElementById('nextImage');
+        
+        const galleryData = [
+            {
+                src: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Street Parade",
+                desc: "Colorful parade with dancers in traditional costumes during the Pistasama Festival"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Bread Display",
+                desc: "Artistic arrangement of various bread types showcasing Cuenca's baking heritage"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Food Stalls",
+                desc: "Local delicacies and bread products for sale at the festival food fair"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1540420828642-fca2c5c18abb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Cultural Performance",
+                desc: "Traditional dances and music performances celebrating local culture"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Local Market",
+                desc: "Artisans selling handmade crafts and products at the festival market"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Festival Crowd",
+                desc: "Visitors enjoying the vibrant festival atmosphere in Cuenca"
+            }
+        ];
+        
+        let currentImageIndex = 0;
+        
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateModal();
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        function updateModal() {
+            modalImage.src = galleryData[currentImageIndex].src;
+            modalTitle.textContent = galleryData[currentImageIndex].title;
+            modalDesc.textContent = galleryData[currentImageIndex].desc;
+        }
+        
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        prevImageBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+            updateModal();
+        });
+        
+        nextImageBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % galleryData.length;
+            updateModal();
+        });
+        
+        // Keyboard navigation for gallery modal
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    prevImageBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextImageBtn.click();
+                }
+            }
+        });
+
+        // Interactive Map
+        const mapContainer = document.querySelector('.map-container');
+        const mapLocations = [
+            { x: 30, y: 40, title: "Municipal Plaza", desc: "Main venue for ceremonies and cultural nights" },
+            { x: 70, y: 60, title: "St. Isidore Parish Church", desc: "Religious activities and masses" },
+            { x: 50, y: 20, title: "Municipal Grounds", desc: "Food fair, exhibits, and competitions" },
+            { x: 20, y: 70, title: "Main Streets", desc: "Street dancing and parade routes" },
+            { x: 80, y: 30, title: "Bread-making Area", desc: "Traditional bread-making demonstrations" }
+        ];
+        
+        mapLocations.forEach(location => {
+            const marker = document.createElement('div');
+            marker.className = 'map-marker';
+            marker.style.left = `${location.x}%`;
+            marker.style.top = `${location.y}%`;
+            
+            const tooltip = document.createElement('div');
+            tooltip.className = 'map-tooltip';
+            tooltip.innerHTML = `<h4>${location.title}</h4><p>${location.desc}</p>`;
+            
+            marker.appendChild(tooltip);
+            mapContainer.appendChild(marker);
+            
+            // Add click effect to markers
+            marker.addEventListener('click', () => {
+                marker.style.animation = 'none';
+                marker.offsetHeight; // Trigger reflow
+                marker.style.animation = 'pulse 0.5s';
+                
+                // Show an alert with location info
+                alert(`${location.title}\n\n${location.desc}`);
+            });
+        });
+
+        // Add some CSS for pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: rotate(-45deg) scale(1); }
+                50% { transform: rotate(-45deg) scale(1.3); }
+                100% { transform: rotate(-45deg) scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Logo animation
+        const logo = document.getElementById('logo');
+        logo.addEventListener('click', () => {
+            logo.querySelector('i').style.transform = 'rotate(360deg) scale(1.2)';
+            setTimeout(() => {
+                logo.querySelector('i').style.transform = 'rotate(0) scale(1)';
+            }, 500);
+            
+            // Scroll to top with smooth animation
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const badge = card.querySelector('.card-badge');
+                if (badge) {
+                    badge.style.transform = 'translateY(-5px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const badge = card.querySelector('.card-badge');
+                if (badge) {
+                    badge.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Schedule table row click effect
+        const tableRows = document.querySelectorAll('table tr');
+        tableRows.forEach(row => {
+            row.addEventListener('click', () => {
+                // Remove highlight from all rows
+                tableRows.forEach(r => r.classList.remove('highlighted'));
+                // Add highlight to clicked row
+                row.classList.add('highlighted');
+                
+                // Add a temporary animation
+                row.style.backgroundColor = '#fff3e0';
+                setTimeout(() => {
+                    if (!row.classList.contains('highlighted')) {
+                        row.style.backgroundColor = '';
+                    }
+                }, 1000);
+            });
+        });
+
+        // Add CSS for highlighted row
+        const highlightStyle = document.createElement('style');
+        highlightStyle.textContent = `
+            tr.highlighted {
+                background-color: #fff3e0 !important;
+                box-shadow: inset 0 0 10px rgba(211, 84, 0, 0.3);
+            }
+        `;
+        document.head.appendChild(highlightStyle);
+
+        // Initialize the page with some animations
+        window.addEventListener('load', () => {
+            // Animate hero elements sequentially
+            const heroElements = document.querySelectorAll('.hero h2, .hero p, .cta-button, .countdown');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            // Animate sections on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections and cards
+            document.querySelectorAll('.section, .card, .contact-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
